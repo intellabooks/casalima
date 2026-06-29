@@ -3,322 +3,311 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Casa Liminal × Intellabooks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<title>Casa Liminal × Intellabooks — Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --gray:#F5F5F7;
-    --white:#FFFFFF;
-    --ink:#1D1D1F;
-    --muted:#6E6E73;
-    --navy:#013356;
-    --navy-deep:#011F35;
-    --gold:#D4AF37;
-    --blue:#0071E3;
-    --pink:#FF85A2;
-    --shadow:0 20px 55px -26px rgba(1,51,86,0.30);
+    --cream:#FBF6EF; --paper:#FFFFFF; --navy:#013356; --ink:#46535D;
+    --gold:#C99A2E; --rose:#EC6F9B; --teal:#2F9E8F; --muted:#94A0A8;
+    --line:#EADFCE; --clay:#A8473B; --grn:#1E6F62;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;scroll-snap-type:y mandatory;}
-  body{font-family:'DM Sans',-apple-system,sans-serif;color:var(--ink);background:var(--gray);-webkit-font-smoothing:antialiased;line-height:1.5;}
-  .deck{width:100%;}
-  section{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 1.5rem;position:relative;}
-  .inner{max-width:980px;width:100%;}
-  .eyebrow{font-size:0.8rem;letter-spacing:0.04em;color:var(--blue);margin-bottom:1.1rem;font-weight:700;}
-  h1{font-weight:700;font-size:clamp(2.9rem,7vw,5rem);line-height:1.02;letter-spacing:-0.025em;}
-  h2{font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
-  .lead{font-size:clamp(1.1rem,2vw,1.4rem);color:var(--muted);max-width:640px;margin:1.3rem auto 0;font-weight:400;line-height:1.5;}
-  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);animation:bob 2.2s ease-in-out infinite;}
-  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.55;}50%{transform:translate(-50%,7px);opacity:1;}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--navy);font-family:'DM Sans',system-ui,sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+  section{padding:40px 0}
+  section.hero-tight{padding-top:56px;padding-bottom:8px}
+  h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.14;color:var(--navy)}
+  h1{font-size:clamp(36px,6vw,64px);font-weight:800}
+  h2{font-size:clamp(26px,3.8vw,40px);font-weight:700}
+  .center{text-align:center} .muted{color:var(--muted)}
+  .kicker{font-weight:600;letter-spacing:3px;text-transform:uppercase;font-size:12px;color:var(--rose)}
+  .lead{font-size:clamp(16px,1.9vw,19px);color:var(--ink);max-width:62ch}
+  .mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt40{margin-top:40px}
 
-  .brandmark{position:fixed;top:1.4rem;left:50%;transform:translateX(-50%);font-size:0.92rem;letter-spacing:0.01em;color:var(--ink);z-index:50;background:rgba(255,255,255,0.82);backdrop-filter:blur(8px);padding:0.45rem 1.2rem;border-radius:100px;box-shadow:0 6px 20px -10px rgba(1,51,86,0.25);font-weight:700;}
-  .brandmark .x{color:var(--pink);margin:0 0.4rem;}
-  .dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.7rem;z-index:50;}
-  .dots a{width:9px;height:9px;border-radius:50%;background:rgba(1,51,86,0.22);transition:all .25s;}
-  .dots a:hover{background:var(--navy);}
+  .pillars{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:500;font-size:14px;color:var(--navy)}
+  .pill .pd{width:11px;height:11px;border-radius:50%}
+  .pill.arr .pd{background:var(--gold)} .pill.social .pd{background:var(--rose)} .pill.ops .pd{background:var(--teal)}
 
-  /* navy hero/payoff */
-  .navy{background:var(--navy);color:var(--white);}
-  .navy .eyebrow{color:var(--gold);}
-  .navy h1,.navy h2{color:var(--white);}
-  .navy .lead{color:rgba(255,255,255,0.75);}
-  .navy .scroll-hint{color:rgba(255,255,255,0.55);}
-  .navy .dots a{}
-  .accent{color:var(--gold);}
+  .statband{display:flex;align-items:baseline;gap:12px;justify-content:center;flex-wrap:wrap;margin:8px 0 28px}
+  .statband .num{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(40px,6vw,60px);color:var(--gold)}
+  .statband .lab{font-size:16px;color:var(--ink)}
+  .cals{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:760px){.cals{grid-template-columns:1fr}}
+  .cal{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 16px 18px;box-shadow:0 10px 30px rgba(1,51,86,.06)}
+  .callabel{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;margin-bottom:12px}
+  .tag{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+  .tag.b{background:#F7E4E1;color:#A8473B} .tag.a{background:#DCF0EC;color:#1E6F62}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .dh{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);text-align:center;font-weight:600;padding-bottom:4px}
+  .col{display:flex;flex-direction:column;gap:5px;min-height:200px}
+  .ev{border-radius:7px;padding:6px 7px;font-size:10.5px;line-height:1.25;font-weight:500}
+  .ev.admin{background:#F4D9D5;color:#9C4338} .ev.admin2{background:#EDE7DC;color:#7A6F5C}
+  .ev.auto{background:#EEF3F6;color:#5E7686;border:1px dashed #B9C6CE;font-style:italic}
+  .ev.design{background:#DCF0EC;color:#1E6F62;font-weight:600} .ev.create{background:#FBE2EC;color:#B14A74;font-weight:600}
+  .ev.free{background:#F7ECD2;color:#8A6311;font-weight:600}
+  .calnote{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
 
-  .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;margin-top:2.3rem;}
-  .pills span{font-size:0.88rem;color:rgba(255,255,255,0.92);font-weight:400;border:1px solid rgba(255,255,255,0.28);border-radius:100px;padding:0.5rem 1.1rem;}
+  .pcards,.phcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+  @media(max-width:760px){.pcards,.phcards{grid-template-columns:1fr}}
+  .pcard,.phcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(1,51,86,.05)}
+  .pcard .ph{font-family:'Playfair Display',serif;font-weight:700;font-size:19px;display:flex;align-items:center;margin-bottom:10px}
+  .pcard ul,.phlist{list-style:none}
+  .pcard li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .pcard li:last-child{border-bottom:none}
+  .pcard .nm{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .pcard .nm b{color:var(--navy);font-weight:600;font-size:14px}
+  .pcard .goal{font-size:13px;font-weight:700;white-space:nowrap}
+  .pcard .goal.grw{color:var(--grn)} .pcard .goal.mut{color:var(--muted);font-weight:500;font-style:italic}
+  .pcard .desc{font-size:12px;color:var(--muted);line-height:1.45}
+  .pdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:middle}
 
-  /* connect flow */
-  .chain{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:0.7rem;margin-top:2.6rem;}
-  .node{background:var(--white);border-radius:22px;box-shadow:var(--shadow);padding:1.5rem 1.2rem;width:200px;text-align:center;}
-  .node .ni{font-size:30px;display:block;margin-bottom:0.6rem;}
-  .node .nl{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:0.25rem;}
-  .node h4{font-size:1.12rem;font-weight:700;color:var(--ink);}
-  .arrow{display:flex;align-items:center;color:var(--navy);opacity:0.35;font-size:1.6rem;font-weight:700;}
-  @media(max-width:880px){.arrow{transform:rotate(90deg);}.node{width:80%;max-width:320px;}}
+  .phase{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+  .phase.first{background:#DCF0EC;color:#1E6F62} .phase.next{background:#F7ECD2;color:#8A6311} .phase.later{background:#EDE7DC;color:#7A6F5C}
+  .phgoal{color:var(--ink);font-size:14px;margin:12px 0 12px}
+  .phlist li{padding:9px 0;border-bottom:1px solid var(--line)}
+  .phlist li:last-child{border-bottom:none}
+  .phlist li b{font-size:14px;color:var(--navy);font-weight:600}
+  .phlist .pdesc{display:block;font-size:12px;color:var(--muted)}
 
-  /* example cards */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.6rem;text-align:left;}
-  .card{background:var(--white);border-radius:24px;box-shadow:var(--shadow);padding:2rem 1.9rem;}
-  .card .top{display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;}
-  .card .chip{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:25px;flex:none;}
-  .card.c1 .chip{background:rgba(1,51,86,0.10);}
-  .card.c2 .chip{background:rgba(212,175,55,0.18);}
-  .card.c3 .chip{background:rgba(0,113,227,0.12);}
-  .card.c4 .chip{background:rgba(255,133,162,0.18);}
-  .card .lab{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--muted);}
-  .card h3{font-size:1.4rem;font-weight:700;color:var(--ink);line-height:1.1;margin-top:0.15rem;}
-  .card p{font-size:1.02rem;color:var(--muted);font-weight:400;line-height:1.55;}
-  .card p b{color:var(--ink);font-weight:700;}
-  .card{cursor:pointer;transition:transform .2s ease, box-shadow .2s ease;}
-  .card:hover,.card:focus{transform:translateY(-4px);box-shadow:0 28px 65px -26px rgba(1,51,86,0.42);outline:none;}
-  .card .more{margin-top:1.1rem;font-size:0.85rem;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:0.35rem;}
-  .card .more span{transition:transform .2s ease;}
-  .card:hover .more span{transform:translateX(4px);}
+  .tbl-wrap{overflow-x:auto}
+  .rtable,.ctable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
+  .rtable{min-width:520px}.ctable{min-width:560px}
+  .rtable th,.rtable td,.ctable th,.ctable td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line)}
+  .rtable th{background:var(--navy);color:#F7ECD2;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+  .ctable th{background:#F3EBDD;color:var(--navy);font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+  .rtable tr:last-child td,.ctable tr:last-child td{border-bottom:none}
+  .rtable .yr td{background:#F3EBDD;font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:13px;letter-spacing:.5px}
+  .rtable td.gr{font-family:'Playfair Display',serif;font-weight:800;color:var(--gold);white-space:nowrap;font-size:17px}
+  .rsign{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px;font-size:12px;color:var(--muted)}
+  .rsign b{font-family:'Playfair Display',serif;color:var(--navy);font-weight:700}
+  .ontop{background:rgba(201,154,46,.10);border:1px solid var(--gold);border-radius:12px;padding:12px 18px;text-align:center;color:#8A6311;font-weight:500;font-size:14px;margin-top:18px}
+  .ctable td.y{color:var(--teal);font-weight:700;text-align:center} .ctable td.n{color:var(--clay);font-weight:700;text-align:center}
+  .ctable td.imp{color:#3E7C9A;font-weight:600;text-align:center;font-size:12px}
+  .ctable th:nth-child(2),.ctable th:nth-child(3){text-align:center}
+  .ctable .cat td{background:#FBF6EF;font-weight:700;color:var(--navy);font-family:'Playfair Display',serif}
+  .ckey{font-size:12px;color:var(--muted);margin-top:10px}
+  .honest{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:18px 20px;margin-bottom:18px;color:var(--ink);font-size:15px}
 
-  /* modal */
-  .overlay{position:fixed;inset:0;background:rgba(1,31,53,0.5);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:100;padding:1.5rem;}
-  .overlay.open{display:flex;}
-  .modal{background:var(--white);border-radius:28px;max-width:540px;width:100%;padding:2.5rem 2.3rem;box-shadow:0 50px 100px -30px rgba(1,31,53,0.65);text-align:left;position:relative;animation:pop .24s ease;}
-  @keyframes pop{from{transform:scale(.95);opacity:0;}to{transform:scale(1);opacity:1;}}
-  .modal .x{position:absolute;top:1.1rem;right:1.2rem;width:34px;height:34px;border:none;border-radius:50%;background:var(--gray);color:var(--muted);font-size:1.1rem;cursor:pointer;line-height:1;}
-  .modal .x:hover{background:#e7e7ea;}
-  .modal .mtop{display:flex;align-items:center;gap:0.9rem;margin-bottom:0.4rem;}
-  .modal .mchip{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none;background:rgba(0,113,227,0.12);}
-  .modal .phase{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--gold);}
-  .modal h3{font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1.1;margin-top:0.1rem;}
-  .modal ul{list-style:none;margin-top:1.4rem;}
-  .modal li{display:flex;gap:0.8rem;align-items:flex-start;padding:0.72rem 0;border-bottom:1px solid #ededf0;font-size:1.04rem;color:var(--ink);font-weight:400;line-height:1.45;}
-  .modal li:last-child{border-bottom:none;}
-  .modal li .tick{flex:none;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:0.8rem;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-  .modal li .own{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle;white-space:nowrap;}
-  .modal li .own.cl{color:#D14D6E;background:rgba(255,133,162,0.20);}
-  .modal li .own.ib{color:#0071E3;background:rgba(0,113,227,0.12);}
-  .modal li .own.both{color:#9a7a1e;background:rgba(212,175,55,0.20);}
-
-  /* timeline */
-  .legend{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0.5rem 1.1rem;margin-top:1.5rem;font-size:0.8rem;color:var(--muted);}
-  .legend i{font-style:normal;display:inline-flex;align-items:center;gap:0.35rem;}
-  .legend .sep{color:#c7c7cc;}
-  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
-  .weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.1rem;text-align:left;}
-  .week{background:var(--white);border-radius:20px;box-shadow:var(--shadow);padding:1.3rem 1.1rem;}
-  .week .wh{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);font-weight:700;}
-  .week h4{font-size:1.08rem;font-weight:700;color:var(--ink);margin:0.1rem 0 0.85rem;}
-  .task{display:flex;align-items:flex-start;gap:0.55rem;padding:0.5rem 0;border-top:1px solid #f0f0f2;}
-  .week .task:first-of-type{border-top:none;}
-  .task .dot{margin-top:5px;flex:none;}
-  .task .tk{font-size:0.86rem;color:var(--ink);font-weight:500;line-height:1.3;display:block;}
-  .task .ow{font-size:0.64rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-top:2px;display:block;}
-  .ow.cl{color:#D14D6E;} .ow.ib{color:#0071E3;} .ow.both{color:#9a7a1e;}
-  @media(max-width:760px){.weeks{grid-template-columns:1fr 1fr;}}
-
-  @media(max-width:760px){.dots{display:none;}section{padding:5rem 1.2rem;}.grid{grid-template-columns:1fr;}}
+  .closebox{background:var(--navy);color:var(--cream);border-radius:22px;padding:40px;text-align:center}
+  .closebox h2{color:#fff}
+  .closebox .foot{font-size:13px;color:#9FB6C6;letter-spacing:1px;margin-top:18px}
 </style>
 </head>
 <body>
 
-<div class="brandmark">Casa Liminal<span class="x">×</span>Intellabooks</div>
-
-<nav class="dots">
-  <a href="#s1" title="We know you"></a>
-  <a href="#s2" title="How it connects"></a>
-  <a href="#s3" title="The four parts"></a>
-  <a href="#s4" title="4-week plan"></a>
-  <a href="#s5" title="The payoff"></a>
-</nav>
-
-<div class="deck">
-
-  <!-- INTRO -->
-  <section class="navy" id="s1">
-    <div class="inner">
-      <div class="eyebrow">For the Casa Liminal team</div>
-      <h1>We know exactly<br>what you've <span class="accent">built.</span></h1>
-      <p class="lead">Started in your dad's painting business. Grew when clients wanted more than paint. Now you design spaces that reflect who people are.</p>
-      <div class="pills">
-        <span>Interior design</span>
-        <span>Construction management</span>
-        <span>Remodels &amp; finishes</span>
-        <span>Always-on communication</span>
-        <span>Built to scale</span>
-      </div>
-      <div class="scroll-hint">Scroll ↓</div>
+<section class="center hero-tight">
+  <div class="wrap">
+    <p class="kicker">Casa Liminal × Intellabooks</p>
+    <h1 class="mt16">One goal. Three ways up.</h1>
+    <p class="lead mt24" style="margin-left:auto;margin-right:auto">More time. More reach. Steady income. Here's the whole plan — simple, on one page.</p>
+    <div class="pillars">
+      <span class="pill ops"><span class="pd"></span>More time</span>
+      <span class="pill social"><span class="pd"></span>More reach</span>
+      <span class="pill arr"><span class="pd"></span>Steady income</span>
     </div>
-  </section>
-
-  <!-- HOW IT CONNECTS -->
-  <section id="s2">
-    <div class="inner">
-      <div class="eyebrow">How it all connects</div>
-      <h2>One system.<br>One <span style="color:var(--blue)">yes</span> moves everyone.</h2>
-      <p class="lead" style="margin-bottom:0;">A client approves a design — and the whole business moves on its own.</p>
-      <div class="chain">
-        <div class="node"><span class="ni">🎨</span><div class="nl">Design</div><h4>Coohom + Programa</h4></div>
-        <div class="arrow">→</div>
-        <div class="node"><span class="ni">🧠</span><div class="nl">The hub</div><h4>Intellabooks</h4></div>
-        <div class="arrow">→</div>
-        <div class="node"><span class="ni">💬</span><div class="nl">Clients</div><h4>Kept in the loop</h4></div>
-        <div class="arrow">→</div>
-        <div class="node"><span class="ni">📋</span><div class="nl">The work</div><h4>Moves forward</h4></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE FOUR PARTS -->
-  <section id="s3">
-    <div class="inner">
-      <div class="eyebrow">What it looks like in real life</div>
-      <h2>An example<br>for all four.</h2>
-      <p class="lead" style="margin-bottom:0;">Tap any part to see the simple next steps.</p>
-      <div class="grid">
-        <div class="card c1" role="button" tabindex="0" data-card="programa">
-          <div class="top"><div class="chip">🎨</div><div><div class="lab">Part 1 · Design &amp; approvals</div><h3>Coohom + Programa</h3></div></div>
-          <p>Bianca creates a <b>photoreal 3D in Coohom</b> and drops it into Programa. The client opens a live link and <b>approves the look</b> in minutes — no bulky PDFs.</p>
-          <div class="more">Next steps <span>→</span></div>
-        </div>
-        <div class="card c2" role="button" tabindex="0" data-card="hub">
-          <div class="top"><div class="chip">🧠</div><div><div class="lab">Part 2 · The hub</div><h3>Intellabooks</h3></div></div>
-          <p>That approval lands in Intellabooks and the project <b>moves from Design to Build on its own</b> — no spreadsheet, no sticky notes, nothing forgotten.</p>
-          <div class="more">Next steps <span>→</span></div>
-        </div>
-        <div class="card c3" role="button" tabindex="0" data-card="clients">
-          <div class="top"><div class="chip">💬</div><div><div class="lab">Part 3 · Clients</div><h3>Continual communication</h3></div></div>
-          <p>Your client gets a warm note: <b>"Your design is approved — here's what's next."</b> Sent automatically, in your voice, at every milestone.</p>
-          <div class="more">Next steps <span>→</span></div>
-        </div>
-        <div class="card c4" role="button" tabindex="0" data-card="work">
-          <div class="top"><div class="chip">📋</div><div><div class="lab">Part 4 · The work</div><h3>Project management</h3></div></div>
-          <p>Discovery → Design → Build → Walkthrough. Contractors get the <b>go-ahead by text, check-ins flow back</b> — every project visible in one place.</p>
-          <div class="more">Next steps <span>→</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIMELINE -->
-  <section id="s4">
-    <div class="inner">
-      <div class="eyebrow">From today to launch</div>
-      <h2>Live in <span style="color:var(--blue)">four weeks.</span></h2>
-      <p class="lead" style="margin-bottom:0;">Comfortably paced — with room to breathe.</p>
-      <div class="legend">
-        <i><span class="dot" style="background:#34A853"></span>Easy</i>
-        <i><span class="dot" style="background:#D4AF37"></span>Medium</i>
-        <i><span class="dot" style="background:#E2574B"></span>High</i>
-        <span class="sep">|</span>
-        <i style="color:#D14D6E;font-weight:700">Casa Liminal</i>
-        <i style="color:#0071E3;font-weight:700">Intellabooks</i>
-        <i style="color:#9a7a1e;font-weight:700">Together</i>
-      </div>
-      <div class="weeks">
-        <div class="week">
-          <div class="wh">Week 1</div><h4>Foundation</h4>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Intellabooks account set up</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Start text registration</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Send spreadsheet + business info</span><span class="ow cl">Casa Liminal</span></div></div>
-          <div class="task"><span class="dot" style="background:#D4AF37"></span><div><span class="tk">Set up Coohom + Programa</span><span class="ow cl">Casa Liminal</span></div></div>
-        </div>
-        <div class="week">
-          <div class="wh">Week 2</div><h4>The system</h4>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Import contacts + fields</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Build the 3 pipelines</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Connect socials + contractors</span><span class="ow cl">Casa Liminal</span></div></div>
-          <div class="task"><span class="dot" style="background:#D4AF37"></span><div><span class="tk">Onboard this month’s new clients</span><span class="ow cl">Casa Liminal</span></div></div>
-        </div>
-        <div class="week">
-          <div class="wh">Week 3</div><h4>Voice &amp; content</h4>
-          <div class="task"><span class="dot" style="background:#E2574B"></span><div><span class="tk">Design content + message schedule</span><span class="ow both">Together</span></div></div>
-          <div class="task"><span class="dot" style="background:#E2574B"></span><div><span class="tk">Write emails + texts in your voice</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#D4AF37"></span><div><span class="tk">Approve content + schedule</span><span class="ow cl">Casa Liminal</span></div></div>
-        </div>
-        <div class="week">
-          <div class="wh">Week 4</div><h4>Test &amp; launch</h4>
-          <div class="task"><span class="dot" style="background:#D4AF37"></span><div><span class="tk">Test a real project end-to-end</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#D4AF37"></span><div><span class="tk">Train Bianca &amp; Gloria</span><span class="ow ib">Intellabooks</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Final approval</span><span class="ow cl">Casa Liminal</span></div></div>
-          <div class="task"><span class="dot" style="background:#34A853"></span><div><span class="tk">Launch with new projects 🎉</span><span class="ow both">Together</span></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAYOFF -->
-  <section class="navy" id="s5">
-    <div class="inner">
-      <h2>Everyone moves.<br>You stay the <span class="accent">artist.</span></h2>
-      <p class="lead">Design, client, and crew — in sync, in one place. You scale without losing your standard.</p>
-    </div>
-  </section>
-
-</div>
-
-<div class="overlay" id="overlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
-    <button class="x" id="closeX" aria-label="Close">✕</button>
-    <div class="mtop"><div class="mchip" id="mchip">🎨</div><div><div class="phase" id="mphase">Phase 1 · Get started</div><h3 id="mtitle"></h3></div></div>
-    <ul id="mlist"></ul>
   </div>
-</div>
+</section>
 
-<script>
-  const dots=document.querySelectorAll('.dots a');
-  const secs=document.querySelectorAll('section');
-  const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const i=[...secs].indexOf(e.target);dots.forEach((d,di)=>d.style.background = di===i ? 'var(--pink)' : 'rgba(1,51,86,0.22)');}});},{threshold:0.55});
-  secs.forEach(s=>obs.observe(s));
+<section>
+  <div class="wrap">
+    <p class="kicker center">More time · your week back</p>
+    <h2 class="center mt16">Your week, before &amp; after.</h2>
+    <div class="statband mt24">
+      <span class="num">≈ 20 hrs</span><span class="lab">back every week — about 25% of your time, returned to what you love.</span>
+    </div>
+    <div class="cals">
+      <div class="cal">
+        <div class="callabel"><span class="tag b">Before</span> Always catching up</div>
+        <div class="grid">
+          <div class="dh">Mon</div><div class="dh">Tue</div><div class="dh">Wed</div><div class="dh">Thu</div><div class="dh">Fri</div>
+          <div class="col"><div class="ev admin">Chase contractor</div><div class="ev admin2">Catch up clients</div><div class="ev admin">Send updates</div><div class="ev admin2">Manual invoice</div></div>
+          <div class="col"><div class="ev admin2">Reply to DMs</div><div class="ev admin">Schedule consult</div><div class="ev admin2">Write proposal</div><div class="ev admin">Request reviews</div></div>
+          <div class="col"><div class="ev admin">Chase contractor</div><div class="ev admin2">Reschedule</div><div class="ev admin">Send updates</div><div class="ev admin2">Catch-up admin</div></div>
+          <div class="col"><div class="ev admin2">Reply to DMs</div><div class="ev admin">Invoice reminders</div><div class="ev admin2">Proposal edits</div><div class="ev admin">Book consult</div></div>
+          <div class="col"><div class="ev admin">Onboard new client</div><div class="ev admin2">Send updates</div><div class="ev admin">Reviews</div><div class="ev admin2">Admin catch-up</div></div>
+        </div>
+        <p class="calnote">Busy all day — but most of it isn't design.</p>
+      </div>
+      <div class="cal">
+        <div class="callabel"><span class="tag a">After</span> Free to create</div>
+        <div class="grid">
+          <div class="dh">Mon</div><div class="dh">Tue</div><div class="dh">Wed</div><div class="dh">Thu</div><div class="dh">Fri</div>
+          <div class="col"><div class="ev auto">✓ Follow-ups done</div><div class="ev design">Design time</div></div>
+          <div class="col"><div class="ev auto">✓ Updates sent</div><div class="ev create">Client project</div></div>
+          <div class="col"><div class="ev auto">✓ New clients welcomed</div><div class="ev design">Studio / create</div></div>
+          <div class="col"><div class="ev auto">✓ Social activity</div><div class="ev create">Project site</div></div>
+          <div class="col"><div class="ev auto">✓ Client check-ins</div><div class="ev free">Free / family</div></div>
+        </div>
+        <p class="calnote">The admin still happens — Intellabooks just does it for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  const data={
-    programa:{emoji:'🎨',chip:'rgba(1,51,86,0.10)',title:'Design & approvals',items:[
-      {t:'Set up Coohom for photoreal 3D renders (free to start)',o:'ib'},
-      {t:'Set up Programa for specs, approvals & procurement',o:'cl'},
-      {t:'Onboard this month’s new clients',o:'cl'},
-      {t:'Client approves the look via a live link → signals to Intellabooks',o:'ib'},
-      {t:'Train Bianca & Gloria so they truly own it',o:'ib'}
-    ]},
-    hub:{emoji:'🧠',chip:'rgba(212,175,55,0.18)',title:'Intellabooks · The hub',items:[
-      {t:'Send us your current client spreadsheet',o:'cl'},
-      {t:'We map every field you track today — nothing lost',o:'ib'},
-      {t:'Import your contacts into the platform',o:'ib'},
-      {t:'Keep every client’s information safe & private',o:'ib'},
-      {t:'Build 3 pipelines: Leads · Design approvals · Active projects',o:'ib'}
-    ]},
-    clients:{emoji:'💬',chip:'rgba(0,113,227,0.12)',title:'Continual communication',items:[
-      {t:'Share your business info — name, logo, hours',o:'cl'},
-      {t:'Set up your email + text messaging',o:'ib'},
-      {t:'Every contact opts in — we only reach people who say yes',o:'ib'},
-      {t:'Connect your social accounts — reporting lives here too',o:'cl'},
-      {t:'A warm welcome for every new client',o:'ib'},
-      {t:'Approve your content + communication schedule',o:'cl'},
-      {t:'Reach past clients for referrals & reviews — with gratitude',o:'both'}
-    ]},
-    work:{emoji:'📋',chip:'rgba(255,133,162,0.18)',title:'Project management',items:[
-      {t:'Map your project stages: Discovery → Design → Build → Walkthrough',o:'ib'},
-      {t:'Add your contractors for text updates + check-ins',o:'cl'},
-      {t:'Track every project in one place',o:'ib'},
-      {t:'Test a real project end-to-end before we go live',o:'ib'}
-    ]}
-  };
-  const overlay=document.getElementById('overlay');
-  function openModal(key){const d=data[key];if(!d)return;
-    document.getElementById('mchip').textContent=d.emoji;
-    document.getElementById('mchip').style.background=d.chip;
-    document.getElementById('mtitle').textContent=d.title;
-    const own={cl:'Casa Liminal',ib:'Intellabooks',both:'Together'};
-    document.getElementById('mlist').innerHTML=d.items.map(i=>
-      `<li><span class="tick">✓</span><span>${i.t}<span class="own ${i.o}">${own[i.o]}</span></span></li>`).join('');
-    overlay.classList.add('open');
-  }
-  function closeModal(){overlay.classList.remove('open');}
-  document.querySelectorAll('.card[data-card]').forEach(c=>{
-    c.addEventListener('click',()=>openModal(c.dataset.card));
-    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(c.dataset.card);}});
-  });
-  document.getElementById('closeX').addEventListener('click',closeModal);
-  overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-</script>
+<section>
+  <div class="wrap">
+    <p class="kicker center">What we're building</p>
+    <h2 class="center mt16">Three engines, working as one.</h2>
+    <p class="lead center mt24" style="margin:24px auto 0">Every piece, and the goal it's working toward. (The dollars are added up in the projection below.)</p>
+    <div class="pcards mt40">
+      <div class="pcard">
+        <div class="ph"><span class="pdot" style="background:var(--teal)"></span>More time</div>
+        <ul>
+          <li><div class="nm"><b>Time-back system</b><span class="goal grw">25% of your week</span></div><div class="desc">Your admin, automated — updates, scheduling, invoices, reviews.</div></li>
+          <li><div class="nm"><b>Client onboarding &amp; care</b><span class="goal mut">the relationship</span></div><div class="desc">Every new client nurtured and welcomed from day one.</div></li>
+          <li><div class="nm"><b>Custom conversations &amp; updates</b><span class="goal mut">every project</span></div><div class="desc">On-brand messages that move each job smoothly forward.</div></li>
+        </ul>
+      </div>
+      <div class="pcard">
+        <div class="ph"><span class="pdot" style="background:var(--rose)"></span>More reach</div>
+        <ul>
+          <li><div class="nm"><b>Signature projects</b><span class="goal grw">4 / mo</span></div><div class="desc">Your ~$4k design-and-build work — the hero offer.</div></li>
+          <li><div class="nm"><b>The Network</b><span class="goal grw">+2 clients / mo</span></div><div class="desc">A subscription network + partners who bring you deals (one-time join fee).</div></li>
+          <li><div class="nm"><b>Influencer growth</b><span class="goal grw">478 → 10K</span></div><div class="desc">@casaliminal grown into a real, paying audience.</div></li>
+          <li><div class="nm"><b>Content &amp; photography</b><span class="goal mut">quarterly shoot</span></div><div class="desc">One shoot becomes a season of posts and assets.</div></li>
+          <li><div class="nm"><b>Consults — the gate</b><span class="goal grw">30 / mo</span></div><div class="desc">Paid $125 calls that warm into projects (~7% convert).</div></li>
+        </ul>
+      </div>
+      <div class="pcard">
+        <div class="ph"><span class="pdot" style="background:var(--gold)"></span>Steady income</div>
+        <ul>
+          <li><div class="nm"><b>The Liminal Circle</b><span class="goal grw">100 members</span></div><div class="desc">Membership: your content, office hours, an asset vault, perks.</div></li>
+          <li><div class="nm"><b>Brand partnerships</b><span class="goal grw">1–2 / mo</span></div><div class="desc">Sponsored emails, post-renovation booklets &amp; collabs.</div></li>
+          <li><div class="nm"><b>Digital products</b><span class="goal grw">~40 / mo</span></div><div class="desc">Palette packs, room templates &amp; sourcing guides.</div></li>
+          <li><div class="nm"><b>Courses</b><span class="goal grw">~8 / mo</span></div><div class="desc">Color Confidence · Renovate Without Regret.</div></li>
+          <li><div class="nm"><b>Referrals</b><span class="goal grw">7 / mo</span></div><div class="desc">Finder's fees from your partner network (~$500 each).</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker center">Your growth projection</p>
+    <h2 class="center mt16">+$10k in year one. +$25k by year two.</h2>
+    <p class="lead center mt24" style="margin:24px auto 0">A quarter-by-quarter view as the system comes online — and we believe it's conservative.</p>
+    <div class="ontop">Every number below is added growth — on top of whatever you bring in today.</div>
+    <div class="tbl-wrap mt24">
+      <table class="rtable">
+        <thead><tr><th>Quarter</th><th>What comes online</th><th>Added each month</th></tr></thead>
+        <tbody>
+          <tr class="yr"><td colspan="3">Year One — build the foundation</td></tr>
+          <tr><td>Q1</td><td>Time back, onboarding, the Circle, custom conversations <b style="color:var(--grn)">— this alone pays for Intellabooks</b></td><td class="gr">+$2k</td></tr>
+          <tr><td>Q2</td><td>Influencer growth, content &amp; photography, digital products</td><td class="gr">+$5k</td></tr>
+          <tr><td>Q3</td><td>Consults &amp; the Network ramping; brand partnerships begin</td><td class="gr">+$7.5k</td></tr>
+          <tr><td>Q4</td><td>Courses live, signature projects flowing</td><td class="gr">+$10k</td></tr>
+          <tr class="yr"><td colspan="3">Year Two — scale the engine</td></tr>
+          <tr><td>Q1</td><td>Recurring base compounding</td><td class="gr">+$14k</td></tr>
+          <tr><td>Q2</td><td>The Network &amp; projects scaling</td><td class="gr">+$18k</td></tr>
+          <tr><td>Q3</td><td>Paint line &amp; partnerships scaling</td><td class="gr">+$21k</td></tr>
+          <tr><td>Q4</td><td>Full system — with the investment accelerator, faster</td><td class="gr">+$25k</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted center" style="font-size:13px;margin-top:14px;font-style:italic">Quarter one is the payoff that covers Intellabooks — the time you win back pays for it. From Q2 on, every dollar is true profit from the system.</p>
+    <div class="rsign">
+      <span>$25k/mo added is the floor, not the ceiling — the recurring base, the Network, and the paint line each have room well beyond it.</span>
+      <span><b>Prepared by Intellabooks</b> · for Casa Liminal</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker center">The phases to get there</p>
+    <h2 class="center mt16">Foundation → Build → Scale.</h2>
+    <p class="lead center mt24" style="margin:24px auto 0">Three distinct moves. Each phase does something the last one made possible.</p>
+    <div class="phcards mt40">
+      <div class="phcard">
+        <span class="phase first">Foundation</span>
+        <p class="phgoal">Steady the business — win your time, care for clients, and start recurring income.</p>
+        <ul class="phlist">
+          <li><b>Win back your time</b><span class="pdesc">Automate the admin that eats your week.</span></li>
+          <li><b>Care for every client</b><span class="pdesc">Onboarding &amp; conversations that build the relationship.</span></li>
+          <li><b>Open the Circle</b><span class="pdesc">Your first recurring income, the heart of it all.</span></li>
+        </ul>
+      </div>
+      <div class="phcard">
+        <span class="phase next">Build</span>
+        <p class="phgoal">Turn attention into income — four different motions, not one.</p>
+        <ul class="phlist">
+          <li><b>Grow your audience</b><span class="pdesc">Content, photography &amp; influencer growth.</span></li>
+          <li><b>Create your products</b><span class="pdesc">Digital products &amp; courses to sell on repeat.</span></li>
+          <li><b>Open the consult gate</b><span class="pdesc">Paid, qualified calls that warm into projects.</span></li>
+          <li><b>Build your network</b><span class="pdesc">Partners, referrals &amp; brand deals.</span></li>
+        </ul>
+      </div>
+      <div class="phcard">
+        <span class="phase later">Scale</span>
+        <p class="phgoal">Pour it all into the big work — and fund the leap.</p>
+        <ul class="phlist">
+          <li><b>Land signature projects</b><span class="pdesc">The ~$4k hero work, fed by everything above.</span></li>
+          <li><b>Launch your paint line</b><span class="pdesc">Your specialty, made a product.</span></li>
+          <li><b>Invest to flood the market</b><span class="pdesc">The accelerator — fund the whole system at once.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker center">Houzz vs Intellabooks</p>
+    <h2 class="center mt16">Built to work together.</h2>
+    <p class="lead center mt24" style="margin:24px auto 36px">Houzz is a lovely design tool — keep it. Intellabooks is the business engine that wraps around it.</p>
+    <div class="honest">Here's the best part: Intellabooks imports your Houzz projects, contacts and client details — so you keep Houzz for the 3D design work you love, and Intellabooks runs the business around it. Nothing lost; the two working together.</div>
+    <div class="tbl-wrap">
+      <table class="ctable">
+        <thead><tr><th>Capability</th><th>Houzz Pro</th><th>Intellabooks</th></tr></thead>
+        <tbody>
+          <tr class="cat"><td colspan="3">Where Houzz shines — keep using it</td></tr>
+          <tr><td>3D floor planner &amp; room design</td><td class="y">✓</td><td class="imp">imports</td></tr>
+          <tr><td>Mood boards &amp; visual concepts</td><td class="y">✓</td><td class="imp">imports</td></tr>
+          <tr><td>Product sourcing &amp; marketplace</td><td class="y">✓</td><td class="imp">imports</td></tr>
+          <tr><td>Client design portal</td><td class="y">✓</td><td class="imp">imports</td></tr>
+          <tr class="cat"><td colspan="3">Communication that wins the job</td></tr>
+          <tr><td>Instant 24/7 reply to new clients</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Two-way texting with clients</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Smart automated text follow-ups</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Missed-call text-back</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Phase-based contractor texts</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Custom replies to social comments &amp; DMs</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>One inbox for text, email, IG, FB &amp; web chat</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr class="cat"><td colspan="3">Growth &amp; follow-through</td></tr>
+          <tr><td>Email marketing &amp; drip campaigns</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Sales pipeline with automated triggers</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Advanced client tagging &amp; segmentation</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Past-client reactivation campaigns</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Automated review requests</td><td class="n">~</td><td class="y">✓</td></tr>
+          <tr class="cat"><td colspan="3">New ways to make money</td></tr>
+          <tr><td>Sell courses &amp; digital products</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Membership / paid community</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Funnels &amp; landing pages</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr class="cat"><td colspan="3">Intelligence &amp; connection</td></tr>
+          <tr><td>Workflow automation &amp; triggers</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Smart recommendations from your data</td><td class="n">✗</td><td class="y">✓</td></tr>
+          <tr><td>Connects to the other tools you use</td><td class="n">✗</td><td class="y">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ckey center">✓ built in &nbsp;·&nbsp; ~ limited &nbsp;·&nbsp; ✗ not available &nbsp;·&nbsp; imports = pulled in from Houzz automatically</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="closebox">
+      <h2>Start by winning your time back.</h2>
+      <p class="lead mt16" style="margin:16px auto 0;color:#DCE7EE">Everything else grows from there — one calm, connected system, built around the work you love.</p>
+      <p class="foot">Built by Intellabooks, for Casa Liminal.</p>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
