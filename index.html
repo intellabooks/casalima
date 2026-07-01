@@ -92,6 +92,16 @@
   .ckey{font-size:12px;color:var(--muted);margin-top:10px}
   .honest{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:18px 20px;margin-bottom:18px;color:var(--ink);font-size:15px}
 
+  .coverslide{background:var(--paper);border:1px solid var(--line);border-radius:26px;box-shadow:0 22px 60px rgba(1,51,86,.10);display:flex;gap:clamp(20px,3vw,44px);align-items:center;padding:clamp(26px,4vw,52px);background-image:radial-gradient(520px 280px at 0% 100%,rgba(201,154,46,.10),transparent 60%);overflow:hidden}
+  .coverslide .ctxt{flex:1.2;min-width:0}
+  .coverslide .cart{flex:1;display:flex;justify-content:center}
+  .coverslide .cart svg{width:100%;height:auto;max-width:340px}
+  .covtoclabel{font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--muted);margin-top:22px}
+  .covtoc{list-style:none;counter-reset:t;margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:5px 18px}
+  .covtoc li{counter-increment:t;font-size:14px;color:var(--navy);display:flex;gap:9px;align-items:baseline}
+  .covtoc li::before{content:counter(t);font-family:'Playfair Display',serif;font-weight:800;color:var(--gold);font-size:.9em}
+  .covmantra{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;color:var(--navy);font-size:clamp(14px,1.6vw,18px);margin-top:20px}
+  @media(max-width:760px){.coverslide{flex-direction:column;text-align:center}.coverslide .cart{order:-1}.covtoc{grid-template-columns:1fr;text-align:left;max-width:320px;margin:8px auto 0}.coverslide .pillars{justify-content:center}}
   .closebox{background:var(--navy);color:var(--cream);border-radius:22px;padding:40px;text-align:center}
   .closebox h2{color:#fff}
   .closebox .foot{font-size:13px;color:#9FB6C6;letter-spacing:1px;margin-top:18px}
@@ -99,15 +109,53 @@
 </head>
 <body>
 
-<section class="center hero-tight">
+<section class="hero-tight">
   <div class="wrap">
-    <p class="kicker">Casa Liminal × Intellabooks</p>
-    <h1 class="mt16">One goal. Three ways up.</h1>
-    <p class="lead mt24" style="margin-left:auto;margin-right:auto">More time. More reach. Steady income. Here's the whole plan — simple, on one page.</p>
-    <div class="pillars">
-      <span class="pill ops"><span class="pd"></span>More time</span>
-      <span class="pill social"><span class="pd"></span>More reach</span>
-      <span class="pill arr"><span class="pd"></span>Steady income</span>
+    <div class="coverslide">
+      <div class="ctxt">
+        <p class="kicker">Casa Liminal × Intellabooks</p>
+        <h1 class="mt16">The time to do what you love.<br><span class="gold">The brand to build an empire.</span></h1>
+        <p class="lead mt24">So much of your week goes to everything that isn't design. We take that off your plate — gently — and turn every project into a brand people recognize, remember, and return to.</p>
+        <div class="pillars" style="justify-content:flex-start">
+          <span class="pill ops"><span class="pd"></span>More time</span>
+          <span class="pill social"><span class="pd"></span>More reach</span>
+          <span class="pill arr"><span class="pd"></span>Steady income</span>
+        </div>
+        <p class="covtoclabel">What's inside</p>
+        <ol class="covtoc">
+          <li>Your time, given back</li>
+          <li>What we're building</li>
+          <li>Your growth projection</li>
+          <li>The phases to get there</li>
+          <li>How it all flows</li>
+          <li>Working alongside Houzz</li>
+        </ol>
+        <p class="covmantra">Everyone grows. Everyone wins. Everyone matters.</p>
+      </div>
+      <div class="cart">
+        <svg viewBox="0 0 420 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A glowing intelligent core with light orbiting it.">
+          <defs>
+            <radialGradient id="core" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#F6D68A" stop-opacity=".7"/>
+              <stop offset="45%" stop-color="#EC6F9B" stop-opacity=".18"/>
+              <stop offset="100%" stop-color="#EC6F9B" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="210" cy="210" r="185" fill="url(#core)"/>
+          <g fill="none" stroke="#013356" stroke-opacity=".2" stroke-width="1.6" stroke-dasharray="2 8">
+            <circle cx="210" cy="210" r="152"/><circle cx="210" cy="210" r="104"/>
+          </g>
+          <circle cx="210" cy="210" r="54" fill="#013356"/>
+          <circle cx="210" cy="210" r="54" fill="none" stroke="#C99A2E" stroke-width="3"/>
+          <circle cx="210" cy="210" r="31" fill="#C99A2E"/>
+          <circle cx="199" cy="199" r="9" fill="#F6D68A" fill-opacity=".9"/>
+          <circle cx="362" cy="210" r="12" fill="#2F9E8F"/>
+          <circle cx="210" cy="58" r="11" fill="#EC6F9B"/>
+          <circle cx="105" cy="300" r="10" fill="#C99A2E"/>
+          <circle cx="302" cy="118" r="8" fill="#EC6F9B" fill-opacity=".85"/>
+          <circle cx="118" cy="138" r="7" fill="#2F9E8F" fill-opacity=".85"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
